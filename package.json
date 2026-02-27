@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Retos del Curso de Fundamentos de JavaScript",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest --watch",
@@ -40,6 +41,7 @@
   "homepage": "https://github.com/gndx/curso-fundamentos-js-retos#readme",
   "license": "MIT",
   "devDependencies": {
+    "jsdom": "^28.1.0",
     "vitest": "^4.0.18"
   }
 }
