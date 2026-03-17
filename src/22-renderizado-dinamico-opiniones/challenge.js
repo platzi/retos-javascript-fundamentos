@@ -1,191 +1,79 @@
+// ============================================
+//  Reto 22: Renderizado Dinámico de Opiniones
+// ============================================
+// Completa cada función según las instrucciones.
+// Ejecuta los tests con: npx vitest src/22-renderizado-dinamico-opiniones
+// ============================================
+
+// --- Reto 1: Crear Elemento Opinión
+// Crea estructura: <article><header><div>nombre rating</div><small>fecha</small></header><p>comentario</p></article>
+// Usa: createElement, textContent, appendChild
 function crearElementoOpinion(opinion) {
-  const article = document.createElement('article');
-  
-  const header = document.createElement('header');
-  
-  const meta = document.createElement('div');
-  const nombre = document.createElement('strong');
-  nombre.textContent = opinion.nombre;
-  const rating = document.createElement('span');
-  rating.textContent = `★ ${opinion.rating}/5`;
-  meta.appendChild(nombre);
-  meta.appendChild(rating);
-  
-  const fecha = document.createElement('small');
-  fecha.textContent = opinion.fecha;
-  
-  header.appendChild(meta);
-  header.appendChild(fecha);
-  
-  const comentario = document.createElement('p');
-  comentario.textContent = opinion.comentario;
-  
-  article.appendChild(header);
-  article.appendChild(comentario);
-  
-  return article;
+  // tu codigo aquí
 }
 
+// --- Reto 2: Crear Elemento Opinión con Estilos
+// Igual que Reto 1 pero agrega clases y dataset.id
+// Usa: classList.add, dataset.id
 function crearElementoOpinionConEstilos(opinion) {
-  const article = document.createElement('article');
-  article.classList.add('opinion');
-  article.dataset.id = opinion.id;
-  
-  const header = document.createElement('header');
-  
-  const meta = document.createElement('div');
-  meta.classList.add('meta');
-  
-  const nombre = document.createElement('strong');
-  nombre.textContent = opinion.nombre;
-  
-  const rating = document.createElement('span');
-  rating.textContent = `★ ${opinion.rating}/5`;
-  
-  meta.appendChild(nombre);
-  meta.appendChild(rating);
-  
-  const fecha = document.createElement('small');
-  fecha.classList.add('muted');
-  fecha.textContent = opinion.fecha;
-  
-  header.appendChild(meta);
-  header.appendChild(fecha);
-  
-  const comentario = document.createElement('p');
-  comentario.textContent = opinion.comentario;
-  
-  article.appendChild(header);
-  article.appendChild(comentario);
-  
-  return article;
+  // tu codigo aquí
 }
 
+// --- Reto 3: Renderizar Opiniones
+// Limpia #opiniones y agrega elementos de la lista
+// Usa: querySelector, replaceChildren, appendChild, forEach
 function renderizarOpiniones(lista) {
-  const contenedor = document.querySelector('#opiniones');
-  contenedor.replaceChildren();
-  
-  lista.forEach((opinion) => {
-    const elemento = crearElementoOpinionConEstilos(opinion);
-    contenedor.appendChild(elemento);
-  });
+  // tu codigo aquí
 }
 
+// --- Reto 4: Crear Imagen con Atributos
+// Crea <img> con src, alt, className
+// datosImagen = {src, alt, class}
 function crearImagenConAtributos(datosImagen) {
-  const img = document.createElement('img');
-  img.src = datosImagen.src;
-  img.alt = datosImagen.alt;
-  img.className = datosImagen.class;
-  return img;
+  // tu codigo aquí
 }
 
+// --- Reto 5: Construir Tarjeta Opinión
+// Estructura semántica: <article><header><h3>nombre</h3><span>rating</span></header>
+//                       <section><p>comentario</p></section><footer><small>fecha</small></footer></article>
+// Usa: classList.add para todas las clases
 function construirTarjetaOpinion(opinion) {
-  const article = document.createElement('article');
-  article.classList.add('tarjeta');
-  
-  const header = document.createElement('header');
-  
-  const h3 = document.createElement('h3');
-  h3.textContent = opinion.nombre;
-  
-  const rating = document.createElement('span');
-  rating.classList.add('rating');
-  rating.textContent = `★ ${opinion.rating}/5`;
-  
-  header.appendChild(h3);
-  header.appendChild(rating);
-  
-  const section = document.createElement('section');
-  
-  const comentario = document.createElement('p');
-  comentario.classList.add('comentario');
-  comentario.textContent = opinion.comentario;
-  
-  section.appendChild(comentario);
-  
-  const footer = document.createElement('footer');
-  
-  const fecha = document.createElement('small');
-  fecha.classList.add('fecha');
-  fecha.textContent = opinion.fecha;
-  
-  footer.appendChild(fecha);
-  
-  article.appendChild(header);
-  article.appendChild(section);
-  article.appendChild(footer);
-  
-  return article;
+  // tu codigo aquí
 }
 
+// --- Reto 6: Renderizar Opiniones Filtradas
+// Filtra opiniones con rating >= 4 y renderiza en #opiniones
+// Usa: filter, renderizarOpiniones
 function renderizarOpinionesFiltradas(lista) {
-  const contenedor = document.querySelector('#opiniones');
-  contenedor.replaceChildren();
-  
-  const opinionesFiltradas = lista.filter(opinion => opinion.rating >= 4);
-  
-  opinionesFiltradas.forEach((opinion) => {
-    const elemento = crearElementoOpinionConEstilos(opinion);
-    contenedor.appendChild(elemento);
-  });
+  // tu codigo aquí
 }
 
+// --- Reto 7: Crear Opinión con Template
+// Usa innerHTML con template literals
+// Estructura: <article class="opinion" data-id={id}><header>...</header><p>comentario</p></article>
 function crearOpinionConTemplate(opinion) {
-  const article = document.createElement('article');
-  article.classList.add('opinion');
-  article.dataset.id = opinion.id;
-  
-  article.innerHTML = `
-    <header>
-      <div class="meta">
-        <strong>${opinion.nombre}</strong>
-        <span>★ ${opinion.rating}/5</span>
-      </div>
-      <small class="muted">${opinion.fecha}</small>
-    </header>
-    <p>${opinion.comentario}</p>
-  `;
-  
-  return article;
+  // tu codigo aquí
 }
 
+// --- Reto 8: Renderizar Opiniones Seguro
+// Renderiza en #opiniones con manejo de errores
+// Usa: try-catch, querySelector, console.error
 function renderizarOpinionesSeguro(lista) {
-  try {
-    const contenedor = document.querySelector('#opiniones');
-    if (!contenedor) {
-      console.error('Contenedor #opiniones no encontrado');
-      return;
-    }
-    
-    contenedor.replaceChildren();
-    
-    lista.forEach((opinion) => {
-      const elemento = crearElementoOpinionConEstilos(opinion);
-      contenedor.appendChild(elemento);
-    });
-  } catch (error) {
-    console.error('Error al renderizar opiniones:', error);
-  }
+  // tu codigo aquí
 }
 
+// --- Reto 9: Agregar Opinión al Inicio
+// Inserta opinión al inicio de #opiniones
+// Usa: prepend en lugar de appendChild
 function agregarOpinionAlInicio(opinion) {
-  const contenedor = document.querySelector('#opiniones');
-  const elemento = crearElementoOpinionConEstilos(opinion);
-  contenedor.prepend(elemento);
+  // tu codigo aquí
 }
 
+// --- Reto 10: Renderizar Opiniones Optimizado
+// Renderiza usando DocumentFragment para mejor rendimiento
+// Usa: createElement, createDocumentFragment, appendChild
 function renderizarOpinionesOptimizado(lista) {
-  const contenedor = document.querySelector('#opiniones');
-  contenedor.replaceChildren();
-  
-  const fragment = document.createDocumentFragment();
-  
-  lista.forEach((opinion) => {
-    const elemento = crearElementoOpinionConEstilos(opinion);
-    fragment.appendChild(elemento);
-  });
-  
-  contenedor.appendChild(fragment);
+  // tu codigo aquí
 }
 
 module.exports = {
